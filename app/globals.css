@@ -3,21 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FDFAF5;
+  --foreground: #1C1917;
+  --surface: #F5F0E8;
+  --primary: #E8632A;
+  --gold: #F5A623;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2 {
+  @apply font-heading text-foreground;
+}
+
+@layer components {
+  .btn-primary {
+    @apply rounded-md bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply rounded-md border-2 border-foreground px-6 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-foreground hover:text-ivory;
+  }
+
+  .section-label {
+    @apply text-sm font-semibold uppercase tracking-wider text-primary;
+  }
 }
 
 @layer utilities {

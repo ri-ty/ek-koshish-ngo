@@ -1,101 +1,115 @@
-import Image from "next/image";
+import Link from "next/link";
+import Hero from "@/components/Hero";
+import FadeIn from "@/components/FadeIn";
+import Gallery from "@/components/Gallery";
+import TaxExemptionBanner from "@/components/TaxExemptionBanner";
+
+const stats = [
+  { value: "10K+", label: "Lives Impacted" },
+  { value: "50+", label: "Active Programs" },
+  { value: "7", label: "Core Causes" },
+  { value: "80G", label: "Tax Exemption" },
+];
+
+const causes = [
+  { title: "Education", desc: "Quality learning for underprivileged children" },
+  { title: "Women Empowerment", desc: "Skills training and livelihood support" },
+  { title: "Healthcare", desc: "Medical camps and health awareness drives" },
+  { title: "Environment", desc: "Tree plantation and green initiatives" },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Hero />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="bg-foreground py-16">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
+          {stats.map((stat, i) => (
+            <FadeIn key={stat.label} delay={i * 0.1}>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-gold sm:text-4xl">{stat.value}</p>
+                <p className="mt-1 text-sm text-ivory/70">{stat.label}</p>
+              </div>
+            </FadeIn>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className="py-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <TaxExemptionBanner />
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="mx-auto max-w-3xl text-center">
+              <span className="section-label">Our Mission</span>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                One Effort Can Change Everything
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-foreground/70">
+                Ek Koshish Aisi Bhi is dedicated to uplifting communities across
+                India through education, healthcare, women empowerment, environmental
+                conservation, and holistic wellness. We believe that every small act
+                of kindness creates a ripple of hope that reaches millions.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {causes.map((cause, i) => (
+              <FadeIn key={cause.title} delay={i * 0.1}>
+                <div className="group rounded-md border border-foreground/10 bg-surface p-6 shadow-sm transition-shadow hover:shadow-lg">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground">{cause.title}</h3>
+                  <p className="mt-2 text-sm text-foreground/70">{cause.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn className="mt-12 text-center">
+            <Link
+              href="/works"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80"
+            >
+              View all our works
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+
+      <Gallery />
+
+      <section className="bg-gradient-to-r from-foreground to-primary py-20">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <FadeIn>
+            <h2 className="text-3xl font-bold text-ivory sm:text-4xl">
+              Be Part of the Change
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-ivory/80">
+              Jo bhi donate karega, unhe tax mein{" "}
+              <span className="font-bold text-gold">50% exemption</span> milega.
+              80G Registered NGO.
+            </p>
+            <Link href="/donate" className="btn-primary mt-8 inline-block px-8 py-3.5 text-base">
+              Donate Now
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+    </>
   );
 }

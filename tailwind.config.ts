@@ -9,8 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        ivory: "#FDFAF5",
+        surface: "#F5F0E8",
+        primary: "#E8632A",
+        gold: "#F5A623",
+        foreground: "#1C1917",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        heading: ["var(--font-playfair)", "Georgia", "serif"],
       },
     },
   },
