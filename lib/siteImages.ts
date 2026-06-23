@@ -25,9 +25,3 @@ export const CERT_IMAGES = [
   assetPath("/images/certificates/lei-certificate.jpg"),
   assetPath("/images/certificates/csr-approval.jpg"),
 ];
-
-export const CERT_PDFS = [
-  assetPath("/pdfs/certificate.pdf"),
-  assetPath("/pdfs/LEI%20Certificate%20984500N4BD738D90CC64.pdf"),
-  assetPath("/pdfs/Approval%20Letter%20for%20form%20CSR1%20(8).PDF"),
-];

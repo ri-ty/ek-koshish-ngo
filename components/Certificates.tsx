@@ -3,7 +3,7 @@
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
-import { CERT_IMAGES, CERT_PDFS } from "@/lib/siteImages";
+import { CERT_IMAGES } from "@/lib/siteImages";
 
 export default function Certificates() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -45,16 +45,8 @@ export default function Certificates() {
                       </div>
                     </div>
                   </button>
-                  <div className="flex items-center justify-between gap-2 border-t border-foreground/10 px-4 py-3">
+                  <div className="border-t border-foreground/10 px-4 py-3">
                     <p className="text-sm font-semibold text-foreground">{cert.title}</p>
-                    <a
-                      href={CERT_PDFS[i]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold text-primary hover:bg-primary hover:text-white"
-                    >
-                      {t.common.openPdf}
-                    </a>
                   </div>
                 </div>
               </FadeIn>
@@ -84,16 +76,8 @@ export default function Certificates() {
             className="relative flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-md bg-ivory shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-foreground/10 px-4 py-3">
+            <div className="border-b border-foreground/10 px-4 py-3">
               <p className="font-semibold text-foreground">{t.certificates.items[activeIndex].title}</p>
-              <a
-                href={CERT_PDFS[activeIndex]}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90"
-              >
-                {t.common.downloadPdf}
-              </a>
             </div>
             <div className="overflow-auto p-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
