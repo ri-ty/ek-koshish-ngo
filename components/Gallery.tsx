@@ -3,9 +3,11 @@
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import { GALLERY_IMAGES } from "@/lib/siteImages";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Gallery() {
   const [active, setActive] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -13,14 +15,9 @@ export default function Gallery() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center">
-              <span className="section-label">Our Work in Action</span>
-              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-                Photo Gallery
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-foreground/70">
-                Glimpses from our programs — education drives, community outreach,
-                and events across India.
-              </p>
+              <span className="section-label">{t.gallery.label}</span>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{t.gallery.title}</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-foreground/70">{t.gallery.desc}</p>
             </div>
           </FadeIn>
 
@@ -35,7 +32,7 @@ export default function Gallery() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={src}
-                    alt={`Ek Koshish Aisi Bhi gallery photo ${i + 1}`}
+                    alt={`${t.gallery.title} ${i + 1}`}
                     className="w-full rounded-md object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
@@ -52,7 +49,6 @@ export default function Gallery() {
           onClick={() => setActive(null)}
           role="dialog"
           aria-modal="true"
-          aria-label="Gallery photo"
         >
           <button
             type="button"
@@ -69,11 +65,7 @@ export default function Gallery() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={active}
-              alt="Gallery photo full size"
-              className="h-auto max-h-[85vh] w-full rounded-md object-contain"
-            />
+            <img src={active} alt={t.gallery.title} className="h-auto max-h-[85vh] w-full rounded-md object-contain" />
           </div>
         </div>
       )}

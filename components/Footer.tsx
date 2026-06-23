@@ -1,13 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "@/components/Logo";
-
-const footerLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/works", label: "Our Works" },
-  { href: "/donate", label: "Donate" },
-  { href: "/contact", label: "Contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 const socialLinks = [
   {
@@ -49,6 +44,16 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const footerLinks = [
+    { href: "/", label: t.nav.home },
+    { href: "/about", label: t.nav.aboutUs },
+    { href: "/works", label: t.nav.works },
+    { href: "/donate", label: t.nav.donate },
+    { href: "/contact", label: t.nav.contact },
+  ];
+
   return (
     <footer className="bg-foreground text-ivory">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -57,15 +62,12 @@ export default function Footer() {
             <div className="mb-4 [&_span]:text-ivory">
               <Logo size="md" />
             </div>
-            <p className="text-sm leading-relaxed text-ivory/70">
-              Every Day We Bring Hope To Millions Of Children. Join us in making
-              a lasting difference across communities in India.
-            </p>
+            <p className="text-sm leading-relaxed text-ivory/70">{t.footer.desc}</p>
           </div>
 
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
-              Quick Links
+              {t.footer.quickLinks}
             </h3>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
@@ -83,7 +85,7 @@ export default function Footer() {
 
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
-              Contact
+              {t.footer.contact}
             </h3>
             <ul className="space-y-2 text-sm text-ivory/70">
               <li>
@@ -92,10 +94,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:INFO@EKKOSHISHAISIBHI.COM"
-                  className="hover:text-gold"
-                >
+                <a href="mailto:INFO@EKKOSHISHAISIBHI.COM" className="hover:text-gold">
                   INFO@EKKOSHISHAISIBHI.COM
                 </a>
               </li>
@@ -120,8 +119,8 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-ivory/10 pt-6 text-center text-sm text-ivory/50">
           <p>
-            &copy; {new Date().getFullYear()} Ek Koshish Aisi Bhi. All rights
-            reserved. | 80G Registered NGO
+            &copy; {new Date().getFullYear()} {t.common.orgName}. {t.common.rightsReserved} |{" "}
+            {t.common.registered80g}
           </p>
         </div>
       </div>

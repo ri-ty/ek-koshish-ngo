@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TaxExemptionBanner({ className = "" }: { className?: string }) {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.98 }}
@@ -18,23 +21,19 @@ export default function TaxExemptionBanner({ className = "" }: { className?: str
           80G
         </div>
         <div className="flex-1">
-          <p className="text-lg font-bold text-foreground sm:text-xl">
-            80G Registered NGO — Tax Mein 50% Exemption
-          </p>
+          <p className="text-lg font-bold text-foreground sm:text-xl">{t.taxBanner.title}</p>
           <p className="mt-2 text-base font-medium leading-relaxed text-foreground/80">
-            <span className="font-bold text-primary">Ek Koshish Aisi Bhi</span> ek{" "}
+            {t.taxBanner.line1}{" "}
             <span className="rounded bg-gold/30 px-1.5 py-0.5 font-bold text-foreground">
-              80G Registered NGO
-            </span>{" "}
-            hai. Jo bhi donate karega, unhe{" "}
+              {t.taxBanner.registered}
+            </span>
+            . {t.taxBanner.line2}{" "}
             <span className="rounded bg-gold/30 px-1.5 py-0.5 font-bold text-foreground">
-              tax mein 50% exemption
+              {t.taxBanner.exemption}
             </span>{" "}
-            milega.
+            {t.taxBanner.line3}
           </p>
-          <p className="mt-2 text-sm text-foreground/60">
-            All eligible donations qualify for 50% tax deduction under Section 80G.
-          </p>
+          <p className="mt-2 text-sm text-foreground/60">{t.taxBanner.footnote}</p>
         </div>
       </div>
     </motion.div>

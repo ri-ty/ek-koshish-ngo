@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { LOGO } from "@/lib/siteImages";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <div
@@ -14,7 +17,6 @@ export default function Hero() {
             "url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1920&q=80')",
         }}
       />
-
       <div className="absolute inset-0 bg-gradient-to-br from-foreground/90 via-foreground/75 to-primary/50" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-32 text-center sm:px-6 lg:px-8">
@@ -27,7 +29,7 @@ export default function Hero() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={LOGO}
-            alt="Ek Koshish Aisi Bhi"
+            alt={t.common.orgName}
             className="h-24 w-24 rounded-full border-4 border-gold/60 object-cover shadow-2xl shadow-gold/20 sm:h-28 sm:w-28"
           />
         </motion.div>
@@ -39,7 +41,7 @@ export default function Hero() {
           className="mb-4 inline-flex items-center gap-2 rounded-md border border-gold/50 bg-gold/20 px-5 py-2 text-sm font-bold text-gold shadow-lg"
         >
           <span className="rounded bg-gold px-1.5 py-0.5 text-xs font-black text-foreground">80G</span>
-          Registered NGO — Tax Mein 50% Exemption
+          {t.hero.badge}
         </motion.span>
 
         <motion.h1
@@ -48,8 +50,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-4xl font-bold leading-tight text-ivory sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          Ek Koshish{" "}
-          <span className="text-gold">Aisi Bhi</span>
+          {t.hero.titleMain}{" "}
+          <span className="text-gold">{t.hero.titleAccent}</span>
         </motion.h1>
 
         <motion.p
@@ -58,7 +60,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-ivory/85 sm:text-xl"
         >
-          Every Day We Bring Hope To Millions Of Children
+          {t.hero.tagline}
         </motion.p>
 
         <motion.div
@@ -68,13 +70,13 @@ export default function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link href="/donate" className="btn-primary px-8 py-3.5 text-base">
-            Donate Now
+            {t.common.donateNow}
           </Link>
           <Link
             href="/works"
             className="rounded-md border-2 border-ivory/30 px-8 py-3.5 text-base font-semibold text-ivory transition-colors hover:border-gold hover:text-gold"
           >
-            Our Works
+            {t.common.ourWorks}
           </Link>
         </motion.div>
       </div>

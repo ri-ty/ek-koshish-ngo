@@ -1,4 +1,7 @@
+"use client";
+
 import { LOGO } from "@/lib/siteImages";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface LogoProps {
   size?: "sm" | "md" | "lg";
@@ -13,18 +16,18 @@ const sizes = {
 };
 
 export default function Logo({ size = "md", showName = true, className = "" }: LogoProps) {
+  const { t } = useLanguage();
+
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={LOGO}
-        alt="Ek Koshish Aisi Bhi logo"
+        alt={t.common.orgName}
         className={`${sizes[size]} shrink-0 rounded-full border-2 border-gold/50 object-cover shadow-sm`}
       />
       {showName && (
-        <span className="text-sm font-semibold sm:text-base">
-          Ek Koshish Aisi Bhi
-        </span>
+        <span className="text-sm font-semibold sm:text-base">{t.common.orgName}</span>
       )}
     </div>
   );

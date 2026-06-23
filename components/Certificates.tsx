@@ -2,32 +2,23 @@
 
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
+import { useLanguage } from "@/context/LanguageContext";
 
-const certificates = [
-  {
-    image: "/images/certificates/certificate.jpg",
-    pdf: "/pdfs/certificate.pdf",
-    title: "Registration Certificate",
-    alt: "Ek Koshish Aisi Bhi NGO Registration Certificate",
-  },
-  {
-    image: "/images/certificates/lei-certificate.jpg",
-    pdf: "/pdfs/LEI%20Certificate%20984500N4BD738D90CC64.pdf",
-    title: "LEI Certificate",
-    alt: "LEI Certificate 984500N4BD738D90CC64",
-  },
-  {
-    image: "/images/certificates/csr-approval.jpg",
-    pdf: "/pdfs/Approval%20Letter%20for%20form%20CSR1%20(8).PDF",
-    title: "CSR Approval Letter",
-    alt: "CSR1 Approval Letter",
-  },
+const CERT_IMAGES = [
+  "/images/certificates/certificate.jpg",
+  "/images/certificates/lei-certificate.jpg",
+  "/images/certificates/csr-approval.jpg",
 ];
 
-type Cert = (typeof certificates)[0];
+const CERT_PDFS = [
+  "/pdfs/certificate.pdf",
+  "/pdfs/LEI%20Certificate%20984500N4BD738D90CC64.pdf",
+  "/pdfs/Approval%20Letter%20for%20form%20CSR1%20(8).PDF",
+];
 
 export default function Certificates() {
-  const [active, setActive] = useState<Cert | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -35,37 +26,32 @@ export default function Certificates() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center">
-              <span className="section-label">Verified & Registered</span>
-              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-                Our Certificates
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-foreground/70">
-                Ek Koshish Aisi Bhi is a legally registered NGO. Click any
-                certificate to view, or open the PDF directly.
-              </p>
+              <span className="section-label">{t.certificates.label}</span>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{t.certificates.title}</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-foreground/70">{t.certificates.desc}</p>
             </div>
           </FadeIn>
 
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {certificates.map((cert, i) => (
+            {t.certificates.items.map((cert, i) => (
               <FadeIn key={cert.title} delay={i * 0.1}>
                 <div className="overflow-hidden rounded-md border border-foreground/10 bg-ivory shadow-sm transition-shadow hover:shadow-xl">
                   <button
                     type="button"
-                    onClick={() => setActive(cert)}
+                    onClick={() => setActiveIndex(i)}
                     className="group relative block w-full"
                   >
                     <div className="relative aspect-[3/4] overflow-hidden bg-ivory">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={cert.image}
+                        src={CERT_IMAGES[i]}
                         alt={cert.alt}
                         className="h-full w-full object-contain p-3 transition-transform duration-300 group-hover:scale-105"
                         loading="lazy"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 opacity-0 transition-all group-hover:bg-foreground/40 group-hover:opacity-100">
                         <span className="rounded-md bg-ivory px-4 py-2 text-sm font-semibold text-foreground shadow-lg">
-                          View Full Size
+                          {t.common.viewFullSize}
                         </span>
                       </div>
                     </div>
@@ -73,12 +59,12 @@ export default function Certificates() {
                   <div className="flex items-center justify-between gap-2 border-t border-foreground/10 px-4 py-3">
                     <p className="text-sm font-semibold text-foreground">{cert.title}</p>
                     <a
-                      href={cert.pdf}
+                      href={CERT_PDFS[i]}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="shrink-0 rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold text-primary hover:bg-primary hover:text-white"
                     >
-                      Open PDF
+                      {t.common.openPdf}
                     </a>
                   </div>
                 </div>
@@ -88,17 +74,16 @@ export default function Certificates() {
         </div>
       </section>
 
-      {active && (
+      {activeIndex !== null && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground/90 p-4"
-          onClick={() => setActive(null)}
+          onClick={() => setActiveIndex(null)}
           role="dialog"
           aria-modal="true"
-          aria-label={active.title}
         >
           <button
             type="button"
-            onClick={() => setActive(null)}
+            onClick={() => setActiveIndex(null)}
             className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-md bg-ivory/20 text-ivory hover:bg-ivory/30"
             aria-label="Close"
           >
@@ -111,21 +96,21 @@ export default function Certificates() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-foreground/10 px-4 py-3">
-              <p className="font-semibold text-foreground">{active.title}</p>
+              <p className="font-semibold text-foreground">{t.certificates.items[activeIndex].title}</p>
               <a
-                href={active.pdf}
+                href={CERT_PDFS[activeIndex]}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90"
               >
-                Download PDF
+                {t.common.downloadPdf}
               </a>
             </div>
             <div className="overflow-auto p-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={active.image}
-                alt={active.alt}
+                src={CERT_IMAGES[activeIndex]}
+                alt={t.certificates.items[activeIndex].alt}
                 className="mx-auto h-auto w-full max-w-2xl rounded-md object-contain"
               />
             </div>

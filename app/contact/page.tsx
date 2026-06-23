@@ -2,12 +2,14 @@
 
 import FadeIn from "@/components/FadeIn";
 import { FormEvent, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const inputClass =
   "mt-1 w-full rounded-md border border-foreground/15 bg-ivory px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,10 +21,8 @@ export default function ContactPage() {
       <section className="bg-gradient-to-br from-foreground to-primary py-20 text-ivory">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <h1 className="text-4xl font-bold sm:text-5xl">Contact Us</h1>
-            <p className="mt-4 max-w-2xl text-lg text-ivory/80">
-              Have questions or want to get involved? We&apos;d love to hear from you.
-            </p>
+            <h1 className="text-4xl font-bold sm:text-5xl">{t.contact.title}</h1>
+            <p className="mt-4 max-w-2xl text-lg text-ivory/80">{t.contact.subtitle}</p>
           </FadeIn>
         </div>
       </section>
@@ -32,11 +32,8 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-2">
             <FadeIn>
               <div>
-                <h2 className="text-2xl font-bold">Get in Touch</h2>
-                <p className="mt-4 text-foreground/70">
-                  Reach out to us for donations, volunteering, partnerships, or
-                  any queries about our programs.
-                </p>
+                <h2 className="text-2xl font-bold">{t.contact.getInTouch}</h2>
+                <p className="mt-4 text-foreground/70">{t.contact.desc}</p>
 
                 <div className="mt-8 space-y-6">
                   <div className="flex items-start gap-4">
@@ -46,7 +43,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold">Phone</p>
+                      <p className="font-semibold">{t.contact.phone}</p>
                       <a href="tel:+917827939146" className="text-foreground/70 hover:text-primary">
                         +91 7827939146
                       </a>
@@ -60,11 +57,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold">Email</p>
-                      <a
-                        href="mailto:INFO@EKKOSHISHAISIBHI.COM"
-                        className="text-foreground/70 hover:text-primary"
-                      >
+                      <p className="font-semibold">{t.contact.email}</p>
+                      <a href="mailto:INFO@EKKOSHISHAISIBHI.COM" className="text-foreground/70 hover:text-primary">
                         INFO@EKKOSHISHAISIBHI.COM
                       </a>
                     </div>
@@ -77,14 +71,14 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold">WhatsApp</p>
+                      <p className="font-semibold">{t.contact.whatsapp}</p>
                       <a
                         href="https://wa.me/917827939146"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-foreground/70 hover:text-primary"
                       >
-                        Chat with us on WhatsApp
+                        {t.common.chatWhatsApp}
                       </a>
                     </div>
                   </div>
@@ -101,39 +95,37 @@ export default function ContactPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="mt-4 text-xl font-bold">Message Sent!</h3>
-                    <p className="mt-2 text-foreground/70">
-                      Thank you for reaching out. We&apos;ll get back to you soon.
-                    </p>
+                    <h3 className="mt-4 text-xl font-bold">{t.common.messageSent}</h3>
+                    <p className="mt-2 text-foreground/70">{t.common.messageSentDesc}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium">
-                        Full Name
+                        {t.contact.fullName}
                       </label>
                       <input id="name" name="name" type="text" required className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium">
-                        Email
+                        {t.contact.email}
                       </label>
                       <input id="email" name="email" type="email" required className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium">
-                        Phone
+                        {t.contact.phoneLabel}
                       </label>
                       <input id="phone" name="phone" type="tel" className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium">
-                        Message
+                        {t.contact.message}
                       </label>
                       <textarea id="message" name="message" rows={4} required className={`${inputClass} resize-none`} />
                     </div>
                     <button type="submit" className="btn-primary w-full py-3">
-                      Send Message
+                      {t.common.sendMessage}
                     </button>
                   </form>
                 )}

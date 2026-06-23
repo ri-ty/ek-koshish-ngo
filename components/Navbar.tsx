@@ -5,17 +5,20 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "@/components/Logo";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/works", label: "Our Works" },
-  { href: "/contact", label: "Contact" },
-];
+import LanguageToggle from "@/components/LanguageToggle";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: "/", label: t.nav.home },
+    { href: "/about", label: t.nav.about },
+    { href: "/works", label: t.nav.works },
+    { href: "/contact", label: t.nav.contact },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-foreground/10 bg-ivory/95 backdrop-blur-md">
@@ -39,9 +42,10 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
-          <Link href="/donate" className="btn-primary">
-            Donate Now
+        <div className="flex items-center gap-2 sm:gap-3">
+          <LanguageToggle />
+          <Link href="/donate" className="btn-primary hidden sm:inline-flex">
+            {t.common.donateNow}
           </Link>
 
           <button
@@ -85,6 +89,11 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-2">
+                <Link href="/donate" onClick={() => setOpen(false)} className="btn-primary block text-center">
+                  {t.common.donateNow}
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}
