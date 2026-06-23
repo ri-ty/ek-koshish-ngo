@@ -13,6 +13,11 @@ const works = [
     color: "bg-primary",
   },
   {
+    title: "Orphanage & Children's Home",
+    desc: "Safe shelter, nutritious meals, and a loving environment for orphaned and vulnerable children — giving them a home, care, and hope for a brighter future.",
+    color: "bg-gold",
+  },
+  {
     title: "Women Empowerment",
     desc: "Through skill development programs, vocational training, and self-help groups, we empower women to become financially independent and confident leaders.",
     color: "bg-gold",
@@ -52,7 +57,7 @@ export default function WorksPage() {
           <FadeIn>
             <h1 className="text-4xl font-bold sm:text-5xl">Our Works</h1>
             <p className="mt-4 max-w-2xl text-lg text-ivory/80">
-              Seven pillars of change — each program designed to create lasting
+              Eight pillars of change — each program designed to create lasting
               impact in communities across India.
             </p>
           </FadeIn>

@@ -7,15 +7,15 @@ import TaxExemptionBanner from "@/components/TaxExemptionBanner";
 const stats = [
   { value: "10K+", label: "Lives Impacted" },
   { value: "50+", label: "Active Programs" },
-  { value: "7", label: "Core Causes" },
+  { value: "8", label: "Core Causes" },
   { value: "80G", label: "Tax Exemption" },
 ];
 
 const causes = [
   { title: "Education", desc: "Quality learning for underprivileged children" },
+  { title: "Orphanage & Children's Home", desc: "Safe shelter and care for vulnerable children" },
   { title: "Women Empowerment", desc: "Skills training and livelihood support" },
   { title: "Healthcare", desc: "Medical camps and health awareness drives" },
-  { title: "Environment", desc: "Tree plantation and green initiatives" },
 ];
 
 export default function Home() {
