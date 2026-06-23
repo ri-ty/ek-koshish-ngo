@@ -3,18 +3,7 @@
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
-
-const CERT_IMAGES = [
-  "/images/certificates/certificate.jpg",
-  "/images/certificates/lei-certificate.jpg",
-  "/images/certificates/csr-approval.jpg",
-];
-
-const CERT_PDFS = [
-  "/pdfs/certificate.pdf",
-  "/pdfs/LEI%20Certificate%20984500N4BD738D90CC64.pdf",
-  "/pdfs/Approval%20Letter%20for%20form%20CSR1%20(8).PDF",
-];
+import { CERT_IMAGES, CERT_PDFS } from "@/lib/siteImages";
 
 export default function Certificates() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
