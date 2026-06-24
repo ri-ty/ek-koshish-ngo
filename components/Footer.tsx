@@ -94,8 +94,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:INFO@EKKOSHISHAISIBHI.COM" className="hover:text-gold">
-                  INFO@EKKOSHISHAISIBHI.COM
+                <a href="mailto:neelamshashi28@gmail.com" className="hover:text-gold">
+                  neelamshashi28@gmail.com
                 </a>
               </li>
             </ul>

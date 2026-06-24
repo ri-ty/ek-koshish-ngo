@@ -47,8 +47,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold">{t.contact.email}</p>
-                    <a href="mailto:INFO@EKKOSHISHAISIBHI.COM" className="text-foreground/70 hover:text-primary">
-                      INFO@EKKOSHISHAISIBHI.COM
+                    <a href="mailto:neelamshashi28@gmail.com" className="text-foreground/70 hover:text-primary">
+                      neelamshashi28@gmail.com
                     </a>
                   </div>
                 </div>
