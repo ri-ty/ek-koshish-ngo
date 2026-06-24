@@ -84,7 +84,12 @@ export const en = {
   donate: {
     label: "Support Our Cause",
     title: "Make a Donation",
-    desc: "Transfer your donation directly to our bank account. Every contribution brings hope to those who need it most.",
+    desc: "Support our cause online or transfer directly to our bank account. Every contribution brings hope to those who need it most.",
+    onlineTitle: "Donate Online",
+    onlineDesc: "Pay securely via Razorpay or PayU. You will be redirected to complete your donation.",
+    razorpay: "Donate via Razorpay",
+    payu: "Donate via PayU",
+    orBankTransfer: "Or transfer directly to our bank account",
     bankTitle: "Bank Transfer Details",
     bankSubtitle: "Transfer directly to our official account",
     accountName: "Account Name",
