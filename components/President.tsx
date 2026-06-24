@@ -19,7 +19,7 @@ export default function President() {
                 <img
                   src={PRESIDENT}
                   alt={t.president.alt}
-                  className="aspect-[3/4] w-full object-cover"
+                  className="aspect-[3/4] w-full object-cover object-[center_18%]"
                 />
               </div>
             </div>
@@ -29,6 +29,7 @@ export default function President() {
             <div>
               <span className="section-label">{t.president.label}</span>
               <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{t.president.title}</h2>
+              <p className="mt-2 text-2xl font-semibold text-primary">{t.president.name}</p>
               <p className="mt-6 leading-relaxed text-foreground/70">{t.president.desc1}</p>
               <p className="mt-4 leading-relaxed text-foreground/70">{t.president.desc2}</p>
               <div className="mt-8 inline-flex items-center gap-2 rounded-md border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-semibold text-foreground">

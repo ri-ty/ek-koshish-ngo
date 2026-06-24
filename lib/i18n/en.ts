@@ -60,11 +60,12 @@ export const en = {
   president: {
     label: "Leadership",
     title: "Our President",
+    name: "Neelam Sharma",
     desc1:
       "Guided by visionary leadership, Ek Koshish Aisi Bhi continues to expand its reach across education, healthcare, women empowerment, and environmental causes. Her dedication inspires every volunteer and donor to be part of this mission.",
     desc2:
       "With a hands-on approach and deep commitment to community service, she ensures that every koshish (effort) translates into real, lasting change for those who need it most.",
-    alt: "President of Ek Koshish Aisi Bhi",
+    alt: "Neelam Sharma, President of Ek Koshish Aisi Bhi",
   },
   gallery: {
     label: "Our Work in Action",
