@@ -4,6 +4,7 @@ import Link from "next/link";
 import Certificates from "@/components/Certificates";
 import FadeIn from "@/components/FadeIn";
 import Gallery from "@/components/Gallery";
+import President from "@/components/President";
 import TaxExemptionBanner from "@/components/TaxExemptionBanner";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -44,6 +45,8 @@ export default function AboutContent() {
           </div>
         </div>
       </section>
+
+      <President />
 
       <section className="bg-surface py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

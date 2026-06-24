@@ -19,7 +19,7 @@ export default function President() {
                 <img
                   src={PRESIDENT}
                   alt={t.president.alt}
-                  className="aspect-[3/4] w-full object-cover object-[center_18%]"
+                  className="aspect-[3/4] w-full object-cover object-top"
                 />
               </div>
             </div>
